@@ -7,9 +7,12 @@
 //
 
 #import "TimelineViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
 #import "APIManager.h"
 
 @interface TimelineViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 
 @end
 
@@ -17,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -37,15 +39,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+//Connected to Logoout Button; Function logs out user from Twitter
+-(IBAction)logOutAction:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
+    
+    [[APIManager shared] logout];
 }
-*/
 
 
 @end
