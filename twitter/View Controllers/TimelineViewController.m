@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSArray *arrayOfTweets;
 @property (weak, nonatomic) IBOutlet UITableView *tweetsTableView;
 
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 @end
 
@@ -27,7 +29,16 @@
     [super viewDidLoad];
     self.tweetsTableView.delegate = self;
     self.tweetsTableView.dataSource = self;
+    [self getTweets];
     
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getTweets) forControlEvents: UIControlEventValueChanged];
+        [self.tweetsTableView insertSubview:self.refreshControl atIndex:0];
+    
+}
+
+-(void) getTweets{
     // Get timeline
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweets, NSError *error) {
         if (tweets) {
@@ -39,6 +50,7 @@
         }
         
     }];
+    [self.refreshControl endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
