@@ -98,7 +98,7 @@
     NSString *favoriteCount = [@(currentTweet.favoriteCount) stringValue];
     NSString *retweetCount = [@(currentTweet.retweetCount) stringValue];
     
-    
+    cell.tweet = currentTweet;
     cell.username.text = name;
     cell.userHandle.text = screenName;
     cell.userProfile.image = nil;
