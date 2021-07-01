@@ -13,6 +13,7 @@
 #import "APIManager.h"
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
+#import <DateTools.h>
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
@@ -97,6 +98,7 @@
     //converts int to NSString
     NSString *favoriteCount = [@(currentTweet.favoriteCount) stringValue];
     NSString *retweetCount = [@(currentTweet.retweetCount) stringValue];
+    
     
     cell.tweet = currentTweet;
     cell.username.text = name;
