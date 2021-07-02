@@ -1,3 +1,4 @@
+
 # Project 3 - *Mock Twitter*
 
 **Mock Twitter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
@@ -53,7 +54,14 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://user-images.githubusercontent.com/58496944/124212576-106cf580-daa4-11eb-8843-0bb71ad2d26e.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough' />
+<img src='https://user-images.githubusercontent.com/58496944/124212807-72c5f600-daa4-11eb-94c0-00f159614f2f.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough'/>
+<img src='https://user-images.githubusercontent.com/58496944/124213135-ebc54d80-daa4-11eb-8347-7c9b7ccb42f8.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough'/>
+<img src='https://user-images.githubusercontent.com/58496944/124213534-98073400-daa5-11eb-96dd-65b3c5bf0838.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough'/>
+<img src='https://user-images.githubusercontent.com/58496944/124213760-faf8cb00-daa5-11eb-91c5-d1ab989da8db.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough'/>
+
+
+
 
 GIF created with [Kap](https://getkap.co/).
 
