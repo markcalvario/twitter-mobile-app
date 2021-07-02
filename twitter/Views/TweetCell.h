@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 //Buttons
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 
 
 

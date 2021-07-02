@@ -33,7 +33,7 @@
              }
              else{
                  NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-                 [self updateView];
+                 [self updateView:@"favored"];
              }
          }];
     }
@@ -47,7 +47,7 @@
              }
              else{
                  NSLog(@"Successfully unfavorited the following Tweet: %@", tweet.text);
-                 [self updateView];
+                 [self updateView:@"unFavored"];
              }
          }];
     }
@@ -65,7 +65,7 @@
              }
              else{
                  NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-                 [self updateView];
+                 [self updateView:@"retweeted"];
              }
          }];
     }
@@ -79,17 +79,32 @@
              }
              else{
                  NSLog(@"Successfully favorited the following Tweet: %@", tweet.text);
-                 [self updateView];
+                 [self updateView:@"unRetweeted"];
              }
          }];
     }
 }
 
--(void) updateView{
+-(void) updateView:(NSString *)typeOfAction{
         NSString *favoriteCount = [@(self.tweet.favoriteCount) stringValue];
-        NSString *retweetCount = [@(self.tweet.favoriteCount) stringValue];
+        NSString *retweetCount = [@(self.tweet.retweetCount) stringValue];
         self.numOfLikes.text = favoriteCount;
-        self.numOfLikes.text = retweetCount;
+        self.numOfRetweets.text = retweetCount;
+        
+        if ([typeOfAction isEqualToString:@"retweeted"]){
+            [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
+        }
+        else if ([typeOfAction isEqualToString:@"unRetweeted"]){
+            [self.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+        }
+        else if ([typeOfAction isEqualToString:@"favored"]){
+            [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
+        }
+        else if ([typeOfAction isEqualToString:@"unFavored"]){
+            [self.favoriteButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+        }
+    
+        
 }
 
 @end

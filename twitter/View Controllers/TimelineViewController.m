@@ -14,6 +14,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
 #import <DateTools.h>
+#import "TweetDetailsViewController.h"
+
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
@@ -21,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tweetsTableView;
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
 
 @end
 
@@ -90,6 +91,7 @@
     NSString *name = currentTweet.user.name;
     NSString *screenName = currentTweet.user.screenName;
     NSString *profileURLString = currentTweet.user.profilePicture;
+    profileURLString = [profileURLString stringByReplacingOccurrencesOfString:@"_normal" withString:@""];
     
     
     NSURL *url = [NSURL URLWithString: profileURLString];
@@ -110,7 +112,18 @@
     cell.tweetDate.text = currentTweet.createdAtString;
     cell.numOfRetweets.text = retweetCount;
     
-    
+    if (cell.tweet.retweeted){
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon-green.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [cell.retweetButton setImage:[UIImage imageNamed:@"retweet-icon.png"] forState:UIControlStateNormal];
+    }
+    if (cell.tweet.favorited){
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon-red.png"] forState:UIControlStateNormal];
+    }
+    else{
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"favor-icon.png"] forState:UIControlStateNormal];
+    }
     cell.userProfile.layer.cornerRadius = cell.userProfile.frame.size.width /2;
     
     return cell;
@@ -121,9 +134,22 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UINavigationController *navigationController = [segue destinationViewController];
-    ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
-    composeController.delegate = self;
+    
+    
+    if ([segue.destinationViewController isKindOfClass: [TweetDetailsViewController class]] == YES){
+        TweetCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tweetsTableView indexPathForCell: tappedCell];
+        Tweet *tweet = self.arrayOfTweets[indexPath.row];
+        
+        TweetDetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.tweet = tweet;
+    }
+    else{
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
+   
 }
 
 
