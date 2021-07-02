@@ -1,4 +1,3 @@
-
 # Project 3 - *Mock Twitter*
 
 **Mock Twitter** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
@@ -60,7 +59,7 @@ Here's a walkthrough of implemented user stories:
 <img src='https://user-images.githubusercontent.com/58496944/124213534-98073400-daa5-11eb-96dd-65b3c5bf0838.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough'/>
 <img src='https://user-images.githubusercontent.com/58496944/124213760-faf8cb00-daa5-11eb-91c5-d1ab989da8db.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough'/>
 <img src='https://user-images.githubusercontent.com/58496944/124214127-9b4eef80-daa6-11eb-8e1d-7c7db60e0018.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough'/>
-
+<img src='https://user-images.githubusercontent.com/58496944/124214476-1d3f1880-daa7-11eb-9cc8-aadb06b970a3.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough'/>
 
 
 
